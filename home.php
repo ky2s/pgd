@@ -13,6 +13,7 @@ if ($result->num_rows > 0) {
 
     $row = $result->fetch_assoc();
     $dailyText = $row['price'];
+    $dailySellText = $row['selling_price'];
 }
 
 //yesterday

@@ -34,38 +34,28 @@ function getCrawlData()
     // Periksa jika elemen ditemukan
     if ($tdNodes->length > 0) {
         // Ambil nilai teks dari elemen <td>
-        $value = $tdNodes->item(2)->nodeValue;
-        preg_match('/\d{1,3}(?:,\d{3})*/', $value, $matches);
+        $buy_value = $tdNodes->item(2)->nodeValue;
+        preg_match('/\d{1,3}(?:,\d{3})*/', $buy_value, $matches);
+
+        $sell_value = $tdNodes->item(3)->nodeValue;
+        preg_match('/\d{1,3}(?:,\d{3})*/', $sell_value, $sell_matches);
 
         // foreach ($tdNodes as $tr) {
         //        echo "<pre>";
         //        print_r($dom->saveHTML($tr));
         //        echo "</pre>";
         // }
-
+        
         // Hapus karakter koma (,) jika ingin mendapatkan nilai numerik
-        $value = str_replace(',', '', $matches[0]);
+        $buy_value = str_replace(',', '', $matches[0]);
+        $sell_value = str_replace(',', '', $sell_matches[0]);
         // $numericValue = str_replace('Rp', '', $numericValue);
 
     } else {
         echo "Element tidak ditemukan.";
     }
-    // print_r($numericValue);
-        // exit();  
-    // // find all link
-    // foreach($html->find('td') as $i => $element) {
-        
-    //     if($i == 4){
-    //         echo "Harga emas Antam hari ini 1 gr ".$element->innertext . '<br>  ';
-    //         $strprice = $element->innertext;
 
-    //         break;
-    //     }
-
-    // }
-
-
-    return $value;
+    return array("buy_val"=>$buy_value,"sell_val"=>$sell_value);
 }
 
 
@@ -113,33 +103,41 @@ function get30days(){
     return $stmt;
 }
 
-function insertGold($name, $weight, $price)
+function insertGold($name, $weight, $price, $selling_price)
 {
     $conn = DB();
 
-    $sql = "INSERT INTO gold_daily (name, weight, price, created_at) VALUES (?, ?, ?, CURRENT_TIMESTAMP)";
+    $sql = "INSERT INTO gold_daily 
+            (name, weight, price, selling_price, created_at) 
+            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)";
 
-    // Mempersiapkan dan mengeksekusi statement
     $stmt = $conn->prepare($sql);
 
-    $stmt->bind_param("sii", $name, $weight, $price);
-
     if ($stmt === false) {
-        die("Error mempersiapkan statement: " . $conn->error);
-    }
-    
-    if ($stmt->execute()) {
-        echo "Data berhasil ditambahkan.";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        die("Prepare failed: " . $conn->error);
     }
 
-    $conn->close();
+    // s = string, d = double
+    $stmt->bind_param(
+        "sddd",
+        $name,
+        $weight,
+        $price,
+        $selling_price
+    );
+
+    if (!$stmt->execute()) {
+        die("Execute failed: " . $stmt->error);
+    }
+
+    echo "Data berhasil ditambahkan.";
+
     $stmt->close();
-
+    $conn->close();
 
     return true;
 }
+
 
 function getCrawlDataShopee($url)
 {

@@ -63,6 +63,15 @@
         }
       }
       </script>
+      <link rel="stylesheet" href="assets/css/style.css">
+      <style>
+        .benefits {
+            height: 100%;
+        }
+        #resultCol {
+            transition: all 0.3s ease;
+        }
+        </style>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -71,7 +80,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div class="container-custom">
-        <h1>Harga Emas Hari Ini <span class="unit">(/gr)</span></h1>
+        <h1>Harga Emas Hari Ini <span class="unit">(/gram)</span></h1>
         <div class="date-info"></div>
         <div class="price" id="gold-price">Rp 0</div>
         <div id="price-change">
@@ -106,38 +115,46 @@
     </div>
 
     <div class="container-custom">
-        <div class="benefits">
-            <img src="assets/gold.jpg">
-            <h2>Kelebihan dan Keuntungan Membeli Emas</h2>
-            <ul>
-                <li>Emas adalah aset yang tahan inflasi.</li>
-                <li>Emas memiliki likuiditas tinggi dan mudah diperjualbelikan.</li>
-                <li>Investasi emas dapat mendiversifikasi portofolio Anda.</li>
-                <li>Emas dapat digunakan sebagai jaminan untuk pinjaman.</li>
-                <li>Nilai emas cenderung stabil dan mengalami kenaikan dalam jangka panjang.</li>
-            </ul>
+        <div class="row">
+            
+            <!-- Kolom 1 -->
+            <div class="col-12 col-md-6 mb-4">
+                <div class="benefits">
+                    <img src="assets/gold.jpg" class="img-fluid mb-3" alt="Emas">
+                    <h2>Kelebihan dan Keuntungan Membeli Emas</h2>
+                    <ul>
+                        <li>Emas adalah aset yang tahan inflasi.</li>
+                        <li>Emas memiliki likuiditas tinggi dan mudah diperjualbelikan.</li>
+                        <li>Investasi emas dapat mendiversifikasi portofolio Anda.</li>
+                        <li>Emas dapat digunakan sebagai jaminan untuk pinjaman.</li>
+                        <li>Nilai emas cenderung stabil dan mengalami kenaikan dalam jangka panjang.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Kolom 2 -->
+            <div class="col-12 col-md-6 mb-4">
+                <div class="benefits">
+                    <img src="assets/grafic.jpg" class="img-fluid mb-3" alt="Grafik Emas">
+                    <h2 class="card-title">Ikuti Pergerakan Harga Emas Setiap Hari!</h2>
+                    <p class="card-text">
+                        Anda ingin tahu harga emas terbaru setiap hari? Jangan lewatkan kesempatan untuk selalu up-to-date dengan informasi terkini mengenai pergerakan harga emas!
+                    </p>
+                    <h6>Kenapa Harus Berlangganan?</h6>
+                    <ul>
+                        <li><strong>Informasi Terkini</strong><br>
+                            Dapatkan update harga emas terbaru setiap hari langsung di inbox Anda.</li>
+                        <li><strong>Keputusan Investasi yang Tepat</strong><br>
+                            Informasi harga emas yang akurat membantu Anda membuat keputusan investasi yang lebih baik.</li>
+                        <li><strong>Tidak Ketinggalan Peluang</strong><br>
+                            Jangan sampai melewatkan peluang emas untuk membeli atau menjual dengan harga terbaik.</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </div>
-
-    <div class="container-custom">
-        <div class="benefits">
-            <img src="assets/grafic.jpg">
-
-            <h2 class="card-title">Ikuti Pergerakan Harga Emas Setiap Hari!</h5>
-            <p class="card-text">Anda ingin tahu harga emas terbaru setiap hari? Jangan lewatkan kesempatan untuk selalu up-to-date dengan informasi terkini mengenai pergerakan harga emas!</p>
-            <h6>Kenapa Harus Berlangganan?</h6>
-            <ul>
-                <li><strong>Informasi Terkini</strong>: 
-                    <br>Dapatkan update harga emas terbaru setiap hari langsung di inbox Anda.</li>
-                <li><strong>Keputusan Investasi yang Tepat</strong>: 
-                    <br>Informasi harga emas yang akurat membantu Anda membuat keputusan investasi yang lebih baik.</li>
-                <li><strong>Tidak Ketinggalan Peluang</strong>: 
-                    <br>Jangan sampai melewatkan peluang emas untuk membeli atau menjual dengan harga terbaik.</li>
-            </ul>
-           
-        </div>
-    </div>
-    
+   
     <div class="subscribe container-custom">
         <h2>Gabung sekarang untuk update harga Emas</h2>
         <p>Masukkan email Anda di bawah ini dan mulai terima update harga emas setiap hari. <br>Langganan ini gratis dan dapat Anda batalkan kapan saja.</p>
@@ -158,6 +175,66 @@
             <p class="font-size-xs mb-0"><i class="fas fa-envelope"></i> info@etalastok.com</p>
         </div>
     </div>
+
+    <div class="container-custom">
+        <div class="row justify-content-center" id="mainRow">
+
+            <!-- FORM COLUMN -->
+            <div id="formCol" class="col-12 col-md-6 mx-auto">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="text-center mb-4">Kalkulator Untung / Rugi Emas</h5>
+                    <div class="alert alert-light border text-center">
+                        Harga jual hari ini (/gram)<br>
+                        <strong id="hargaHariIni" class="text-success"></strong>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Berat emas (gram)</label>
+                        <input type="number" class="form-control" id="berat" placeholder="Contoh: 3">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rp</span>
+                            </div>
+                            <input type="text" class="form-control" id="totalBeli" placeholder="4.500.000">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" onclick="hitung()">Hitung</button>
+                    <!-- <button class="btn btn-outline-secondary btn-block mt-2" onclick="resetCalc()">Reset</button> -->
+                </div>
+            </div>
+            </div>
+
+            <!-- RESULT COLUMN -->
+            <div id="resultCol" class="col-12 col-md-6 d-none">
+
+                <div id="resultCard" class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+
+                    <p class="mb-1">Modal Awal</p>
+                    <h5 id="modal"></h5>
+
+                    <p class="mb-1 mt-3">Nilai Jual Hari Ini</p>
+                    <h5 id="nilaiJual"></h5>
+
+                    <hr>
+
+                    <h5 id="status"></h5>
+                    <h4 id="profit"></h4>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        </div>
+
 
     <div class="container-custom">
         <div class="benefits">
@@ -413,5 +490,77 @@
         }
     </script>
     
+    <script>
+        const inputTotalBeli = document.getElementById("totalBeli");
+
+        inputTotalBeli.addEventListener("input", function (e) {
+        let value = e.target.value;
+
+        // hapus semua selain angka
+        value = value.replace(/\D/g, "");
+
+        // format ribuan
+        e.target.value = formatRupiah(value);
+        });
+
+        function formatRupiah(angka) {
+        return angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        // hitung
+        const hargaHariIni = <?= $dailySellText ?>; // realtime dari API
+        document.getElementById("hargaHariIni").innerText =
+        "Rp " + hargaHariIni.toLocaleString("id-ID");
+
+        function hitung() {
+            const berat = parseFloat(document.getElementById("berat").value);
+            const totalBeli = parseFloat(
+                document.getElementById("totalBeli").value.replace(/\./g, "")
+            );
+
+
+            if (!berat || !totalBeli) {
+                alert("Mohon lengkapi data");
+                return;
+            }
+
+            const modal = totalBeli;
+            const nilaiJual = berat * hargaHariIni;
+            const profit = nilaiJual - modal;
+            const persen = (profit / modal) * 100;
+
+            let statusText = "BEP";
+            let statusClass = "text-secondary";
+
+            if (profit > 0) {
+                statusText = "Untung";
+                statusClass = "text-success";
+            } else if (profit < 0) {
+                statusText = "Rugi";
+                statusClass = "text-danger";
+            }
+
+            document.getElementById("modal").innerText =
+                "Rp " + modal.toLocaleString("id-ID");
+
+            document.getElementById("nilaiJual").innerText =
+                "Rp " + nilaiJual.toLocaleString("id-ID");
+
+            document.getElementById("status").innerHTML =
+                `<span class="${statusClass}">${statusText}</span>`;
+
+            document.getElementById("profit").innerHTML =
+                `<span class="${statusClass}">
+                Rp ${profit.toLocaleString("id-ID")} (${persen.toFixed(2)}%)
+                </span>`;
+
+            // ubah layout jadi 2 kolom (desktop)
+            document.getElementById("formCol").classList.remove("mx-auto");
+            document.getElementById("resultCol").classList.remove("d-none");
+
+        }
+        </script>
+
+
 </body>
 </html>
