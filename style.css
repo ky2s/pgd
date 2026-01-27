@@ -1,0 +1,231 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 10px;
+}
+.container-custom {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+h1 {
+    margin-bottom: 0;
+    font-size: 22px;
+    color: #333;
+}
+.price {
+    /* font-size: 28px;
+    color: #e67e22; */
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e6b800; /* warna emas */
+    margin: 10px 0;
+}
+
+.price-before {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.date-info{
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.price-before small {
+    color: #999;
+}
+
+.unit {
+    font-size: 1rem;
+    color: #777;
+}
+.benefits {
+    margin-top: 15px;
+    text-align: left;
+}
+.benefits h2 {
+    font-size: 18px;
+    color: #333;
+}
+.benefits ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.benefits li {
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+}
+.benefits p {
+    font-size: 14px !important;
+}
+.subscribe h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.subscribe form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.subscribe input {
+    padding: 8px;
+    margin: 5px 0;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.subscribe button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+footer {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #777;
+    text-align: center;
+}
+.chart-container {
+    margin-top: 20px;
+}
+
+div.tnc{
+    display: flex !important;
+}
+#terms{
+    width: auto;  
+    margin: 5px;
+}
+
+.form-check-label{
+    text-align: left;
+    font-size: 13px;
+    max-width: 380px;
+}
+
+.btn-primary.disabled, .btn-primary:disabled{
+    background-color: #d98e4c;
+}
+
+.btn-primary:hover{
+    background-color: #d0915b;
+}
+
+.subscribe p{
+    font-size: 13px;
+}
+
+.benefits img{
+    max-width: 50%;
+    width: 10em;
+    height: auto;
+    display: block;
+    margin-left: auto ;
+    margin-right: auto ;
+    padding: 10px;
+}
+
+.container-custom .benefits .btn {
+    display: block; /* Ubah elemen menjadi block-level */
+    margin: 20px auto; /* Atur margin secara otomatis untuk rata tengah */
+    text-align: center; /* Pastikan teks dalam tombol tetap rata tengah */
+    width: fit-content; /* Sesuaikan lebar tombol sesuai isi */
+}
+
+.swal-popup-mobile {
+    max-width: 400px; /* Biar di desktop tetap nggak terlalu kecil */
+    padding: 1.5rem;
+}
+
+.swal2-confirm {
+    background-color: #e67e22 !important;
+}
+
+.swal2-title{
+    font-size: 18px !important;
+}
+.swal2-html-container{
+    font-size: 14px !important;
+}
+@media (max-width: 600px) {
+    .swal2-title{
+        font-size: 16px !important;
+    }
+    .swal2-html-container{
+        font-size: 12px !important;
+    }
+    .swal-popup-mobile {
+        max-width: 90%;
+    }
+
+    .swal2-confirm {
+        font-size:  .875rem !important;
+        padding: 10px 20px !important;
+        border-radius: 4px !important;
+        background-color: #e67e22 !important;
+        line-height: 1.5 !important;
+    }
+}
+
+/* share btn */
+.share-title{
+    font-size: 0.8rem;
+    margin-top: 20px;
+}
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.share-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 10px;
+}
+.share-button i {
+  font-size: 16px;
+  /* margin-right: 5px; */
+}
+.whatsapp { background: #25D366; }
+.facebook { background: #1877F2; }
+.twitter  { background: #1DA1F2; }
+
+.share-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.subscribe.container-custom{
+    background: linear-gradient(135deg, #F5E1A4 0%, #E6C67A 100%) !important;
+    color: #333 !important;
+}
+
+.subscribe.container-custom h2{
+    font-weight: 600 !important;
+}
