@@ -11,6 +11,10 @@ startSecureSession();
 setSecurityHeaders();
 $csrfToken = generateCsrfToken();
 
+startSecureSession();
+setSecurityHeaders();
+$csrfToken = generateCsrfToken();
+
 // today
 $dailyText = 0;
 $dailySellText = 0;
