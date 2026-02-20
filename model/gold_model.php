@@ -2,8 +2,8 @@
 ini_set( 'display_errors', 1 );   
 error_reporting( E_ALL );
 
-include('helper/simple_html_dom.php');
-include('config/connect.php');
+include_once __DIR__ . '/../helper/simple_html_dom.php';
+include_once __DIR__ . '/../config/connect.php';
 
 function getCrawlData()
 {
@@ -218,5 +218,50 @@ exit;
 }
 
 
+
+
+function getLatestDailyPrice()
+{
+    $conn = DB();
+
+    $sql = "SELECT name, weight, price, selling_price, created_at FROM gold_daily ORDER BY created_at DESC LIMIT 1";
+    $stmt = $conn->query($sql);
+
+    $row = null;
+    if ($stmt && $stmt->num_rows > 0) {
+        $row = $stmt->fetch_assoc();
+    }
+
+    $conn->close();
+
+    return $row;
+}
+
+function getDailyPriceByDate($date)
+{
+    $conn = DB();
+
+    $sql = "SELECT name, weight, price, selling_price, created_at FROM gold_daily WHERE DATE(created_at) = ? ORDER BY created_at DESC LIMIT 1";
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt === false) {
+        $conn->close();
+        return null;
+    }
+
+    $stmt->bind_param('s', $date);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $row = null;
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+    }
+
+    $stmt->close();
+    $conn->close();
+
+    return $row;
+}
 
 ?>

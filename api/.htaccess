@@ -1,0 +1,4 @@
+RewriteEngine On
+
+# pretty URL: /pgd/api/gold_prices -> /pgd/api/gold-prices.php
+RewriteRule ^gold_prices/?$ gold-prices.php [L,QSA,NC]

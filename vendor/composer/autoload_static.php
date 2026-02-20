@@ -11,63 +11,71 @@ class ComposerStaticInit6ea4f36bbf0198834c6e6391b2fdd473
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Component\\Process\\' => 26,
             'Socket\\Raw\\' => 11,
         ),
-        'P' => 
+        'P' =>
         array (
             'Psr\\Log\\' => 8,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
-        'N' => 
+        'N' =>
         array (
             'Nesk\\Rialto\\' => 12,
             'Nesk\\Puphpeteer\\' => 16,
         ),
+        'A' =>
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Php80\\' => 
+        'Symfony\\Polyfill\\Php80\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
-        'Symfony\\Component\\Process\\' => 
+        'Symfony\\Component\\Process\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/process',
         ),
-        'Socket\\Raw\\' => 
+        'Socket\\Raw\\' =>
         array (
             0 => __DIR__ . '/..' . '/clue/socket-raw/src',
         ),
-        'Psr\\Log\\' => 
+        'Psr\\Log\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
-        'PHPMailer\\PHPMailer\\' => 
+        'PHPMailer\\PHPMailer\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
-        'Nesk\\Rialto\\' => 
+        'Nesk\\Rialto\\' =>
         array (
             0 => __DIR__ . '/..' . '/nesk/rialto/src',
         ),
-        'Nesk\\Puphpeteer\\' => 
+        'Nesk\\Puphpeteer\\' =>
         array (
             0 => __DIR__ . '/..' . '/nesk/puphpeteer/src',
+        ),
+        'App\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/src/App',
         ),
     );
 
     public static $prefixesPsr0 = array (
-        'v' => 
+        'v' =>
         array (
-            'vierbergenlars\\SemVer\\' => 
+            'vierbergenlars\\SemVer\\' =>
             array (
                 0 => __DIR__ . '/..' . '/vierbergenlars/php-semver/src',
             ),
-            'vierbergenlars\\LibJs\\' => 
+            'vierbergenlars\\LibJs\\' =>
             array (
                 0 => __DIR__ . '/..' . '/vierbergenlars/php-semver/src',
             ),

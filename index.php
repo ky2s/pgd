@@ -1,4 +1,4 @@
-<?php include('home.php'); ?>
+<?php include_once __DIR__ . '/home.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -159,6 +159,7 @@
         <h2>Gabung sekarang untuk update harga Emas</h2>
         <p>Masukkan email Anda di bawah ini dan mulai terima update harga emas setiap hari. <br>Langganan ini gratis dan dapat Anda batalkan kapan saja.</p>
         <form id="subscribe-form" method="POST">
+            <input type="hidden" id="csrf_token" name="csrf_token" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
             <input type="text" id="name" name="name" placeholder="Nama" required class="form-control">
             <input type="email" id="email" name="email" placeholder="Email" required class="form-control">
             <div class="tnc">
@@ -431,7 +432,8 @@
             method: 'POST',
             data: {
                 name: name,
-                email: email
+                email: email,
+                csrf_token: $('#csrf_token').val()
             },
             success: function(response) {
                 console.log(response.status);
