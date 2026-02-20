@@ -3,10 +3,12 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-include('../helper/security.php');
-include('../model/gold_model.php');
+require_once __DIR__ . '/../vendor/autoload.php';
 
-setSecurityHeaders();
+use App\Model\GoldRepository;
+use App\Security\SecurityHelper;
+
+SecurityHelper::setSecurityHeaders();
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
@@ -15,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     exit;
 }
 
-$ip = getClientIp();
-if (isRateLimited('api_gold_' . $ip, 60, 60)) {
+$ip = SecurityHelper::getClientIp();
+if (SecurityHelper::isRateLimited('api_gold_' . $ip, 60, 60)) {
     http_response_code(429);
     echo json_encode(['status' => 'error', 'message' => 'Rate limit terlampaui']);
     exit;
@@ -24,7 +26,7 @@ if (isRateLimited('api_gold_' . $ip, 60, 60)) {
 
 $expectedApiKey = getenv('GOLD_API_KEY') ?: '';
 if ($expectedApiKey !== '') {
-    $providedApiKey = getApiKeyFromRequest();
+    $providedApiKey = SecurityHelper::getApiKeyFromRequest();
     if ($providedApiKey === '' || !hash_equals($expectedApiKey, $providedApiKey)) {
         http_response_code(401);
         echo json_encode(['status' => 'error', 'message' => 'API key tidak valid']);
@@ -39,7 +41,8 @@ if ($date !== '' && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
     exit;
 }
 
-$data = $date !== '' ? getDailyPriceByDate($date) : getLatestDailyPrice();
+$repository = new GoldRepository();
+$data = $date !== '' ? $repository->getDailyPriceByDate($date) : $repository->getLatestDailyPrice();
 
 if (!$data) {
     http_response_code(404);

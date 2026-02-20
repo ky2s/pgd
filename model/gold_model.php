@@ -2,8 +2,8 @@
 ini_set( 'display_errors', 1 );   
 error_reporting( E_ALL );
 
-include('helper/simple_html_dom.php');
-include('config/connect.php');
+include_once __DIR__ . '/../helper/simple_html_dom.php';
+include_once __DIR__ . '/../config/connect.php';
 
 function getCrawlData()
 {

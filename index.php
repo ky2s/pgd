@@ -1,4 +1,4 @@
-<?php include('home.php'); ?>
+<?php include_once __DIR__ . '/home.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">

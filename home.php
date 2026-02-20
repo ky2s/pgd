@@ -3,9 +3,13 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-include('helper/security.php');
-include('model/gold_model.php');
-include('model/user_model.php');
+include_once __DIR__ . '/helper/security.php';
+include_once __DIR__ . '/model/gold_model.php';
+include_once __DIR__ . '/model/user_model.php';
+
+startSecureSession();
+setSecurityHeaders();
+$csrfToken = generateCsrfToken();
 
 startSecureSession();
 setSecurityHeaders();
